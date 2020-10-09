@@ -20,7 +20,7 @@ let index = 0;
 app.get('/quotes', (req, res) => {
     console.log('hi from get request');
     
-    res.send(quotesData);
+    res.send(quotesData.list);
 });
 
 function randomNumber(min, max) {

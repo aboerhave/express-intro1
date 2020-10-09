@@ -4,17 +4,18 @@ $(document).ready(onReady);
 
 function onReady() {
     console.log('hello jq');
-    // perform SET request
+    // perform GET request
     //getRandomQuote();
     getQuotes();
     $('#submitBtn').on('click', submitQuote)
 }
 
 function submitQuote() {
+    // grabbing values from DOM
     let quote = $('#quote').val();
     let author = $('#author').val();
     console.log('clicked', quote, author);
-    // this is our post request
+    // send data to server via POST REQUEST
     $.ajax({
         method: 'POST',
         url: '/quotes',
@@ -48,7 +49,7 @@ function getQuotes() {
     console.log('get the quote');
     
     $.ajax({
-        method: "GET",
+        method: 'GET',
         url: '/quotes'
     }).then(function (response) {
         console.log('response', response);
@@ -63,6 +64,7 @@ function appendToDom(dataToAppend) {
     // append to div with id = output
     for(let i = 0; i < dataToAppend.length; i++) {
         $('#output').append(`
-        <p>"${dataToAppend[i].quote}" by ${dataToAppend[i].author}</p>`);
+        <p>"${dataToAppend[i].quote}" by ${dataToAppend[i].author}</p>
+        `);
     }
 }
